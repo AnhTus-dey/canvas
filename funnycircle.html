@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var canvas = document.getElementById("myCanvas");
+var context = canvas.getContext("2d");
+
+function draw_circle (circleX, circleY, radius, fill) { 
+    //clear the canvas
+    context.clearRect(0,0,canvas.width, canvas.height);
+
+    context.beginPath();
+    context.fillStyle = "black";
+    context.fillRect(0, 0, 800, 300);
+
+    context.strokeStyle = "red";
+    context.strokeRect(5, 5, 790, 290);
+    var speed = 5;
+    //just a loop if you don't want it simply use `i+=speed;`
+    (i>canvas.width+radius)?i=(radius*-2):i+=speed;
+    context.fillStyle = fill;
+    context.arc(circleX, circleY, radius, 0, Math.PI*2);
+    context.fill();
+}
+
+var i=0;
+
+setInterval(function(){draw_circle(i,100, 30 , "cyan")}, 33);
+</script>
+<canvas id = "myCanvas"></canvas>
+</body>
+</html>
